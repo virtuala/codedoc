@@ -5,4 +5,4 @@
 作者邮箱：110410524@qq.com
 
 楼下盒饭12块，网上乞讨二维码如下：
-<img src="http://www2.unionnets.com/Ui/webwxgetmsgimg_12_20190313.jpg" style="width:50%;" />
+<img src="http://www2.unionnets.com/Ui/webwxgetmsgimg_12_20190313.jpg" width="40%" />
