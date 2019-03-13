@@ -1,0 +1,11 @@
+{
+	"language":["php"],
+	"urlroot":"http://127.0.0.1:8072/",
+	"urlextend":"&uname=core@unionnets.com&upxd=123123",
+	"output":"D:\\_Down\\output_doc\\",
+
+	"loadpaths":[
+		"E:\\WorkStation\\_GPROJECT\\codedoc_unionnets_com\\python0\\run\\codedoc\\testfile"
+	]
+
+}

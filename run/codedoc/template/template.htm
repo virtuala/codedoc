@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"; charset="UTF-8">
+<title>首页 - 文档</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name ="viewport" content ="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+
+<style type="text/css">
+
+h4{ margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; }
+h5{ margin:0px 0px 0px 0px; padding:0px 0px 0px 0px; }
+.MainTable{ background-color:#EEEEEE; }
+.MainTable th{ background-color:#FFFFFF; }
+.MainTable td{ background-color:#FFFFFF; }
+
+.MainTableParameter{ background-color:#EEEEEE; }
+.MainTableParameter th{ background-color:#FFFFFF; }
+.MainTableParameter td{ background-color:#FFFFFF; }
+
+.MainResultBox{}
+.MainResultInput{ width:500px; }
+
+</style>
+
+</head>
+<body>
+<a href="{back}index.htm">返回目录</a>
+<h4>{Nets.Info.title}</h4>
+<div>{Nets.Info.description}</div>
+<div>version:{Nets.Info.version} / author:{Nets.Info.author_update}</div>
+<br />
+
+<input id="MainSubmitDomain" value="{Nets.Info.urlroot}" />
+<input id="MainSubmitExtend" value="{Nets.Info.urlextend}" />
+<br /><br />
+
+
+<table class="MainTable" cellpadding="4" cellspacing="1">
+<tr><th>functionlist</th><th>content</th></tr>
+{Nets.Content}
+</table>
+
+
+
+<div class="">
+<h4 id="MainResultTitle"></h4>
+<input id="MainResultURL" class="MainResultInput" /><br />
+<textarea id="MainResultForm" class="MainResultInput"></textarea><br />
+<iframe id="MainResultIFrame" name="MainResultIFrame" class="MainResultInput"></iframe>
+</div>
+
+
+
+
+<!-- ------ #Javascript ------ -->
+<script type="text/javascript">
+
+function form_onsubmit(pOBJ){
+	
+	var Coun0=0;
+	pOBJ.action=
+		document.getElementById("MainSubmitDomain").value+
+		pOBJ.childNodes[pOBJ.childNodes.length-1].value+
+		document.getElementById("MainSubmitExtend").value
+		;
+
+	document.getElementById("MainResultTitle").innerHTML=pOBJ.childNodes[pOBJ.childNodes.length-2].value;
+
+	var tmpFORM="";
+	Coun0=1;
+	while((pOBJ.childNodes[0].rows.length-1)>Coun0){
+		if(pOBJ.childNodes[0].rows[Coun0].cells[2].childNodes[0].tagName!=undefined){
+			if(pOBJ.childNodes[0].rows[Coun0].cells[2].childNodes[0].tagName.toUpperCase()=="INPUT"){
+				tmpFORM+="&"+pOBJ.childNodes[0].rows[Coun0].cells[2].childNodes[0].name+"="+pOBJ.childNodes[0].rows[Coun0].cells[2].childNodes[0].value;
+			}
+		}
+		Coun0++;
+	}
+	document.getElementById("MainResultForm").value=tmpFORM;
+
+
+
+	document.getElementById("MainResultURL").value=pOBJ.action;
+	if(pOBJ.method.toUpperCase()=="GET"){
+		document.getElementById("MainResultURL").value=pOBJ.action+tmpFORM;
+		window.open(pOBJ.action+tmpFORM,"MainResultIFrame");
+		return false;
+	}
+
+	return true;
+}
+function getIframeContent(){ 
+	var frameObj = document.getElementById("MainResultIFrame"); 
+	var frameContent = frameObj.contentWindow.document.body.innerHTML; 
+	alert("frame content : "+frameContent); 
+} 
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body></html>
